@@ -190,11 +190,13 @@ export PATH="$HOME/flutter/bin:$PATH"
 # .:.:.:.:. #
 
 alias vi='vi'
-alias vim='vim';
+alias vim='vim'
 
 alias sl='ls'
 alias s='ls'
 alias l='ls'
+
+alias his='history'
 
 mkdirAndCd()
 {
@@ -247,5 +249,3 @@ alias flutter-win='cmd.exe /c C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat'
 export PS1="{\[\e[38;2;0102;0234;0252m\]\u\[\e[00m\]}@[\[\e[38;2;0102;0168;0252m\]\w\[\e[00m\]]\n\[\e[38;2;0204;0204;0204m\]E\[\e[00m\]\[\e[48;2;0138;0138;0138m\]\[\e[38;2;0006;0006;0006m\]( *@*)\[\e[00m\]\[\e[38;2;0204;0204;0204m\]3\[\e[00m\]\[\e[38;2;0252;0252;0252m\].oO(\[\e[00m\] "
 
 ##########################################################################
-
-
