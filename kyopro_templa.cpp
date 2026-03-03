@@ -228,6 +228,8 @@ int evch[] = {-1,-1,0,1,1,1,0,-1}, evcw[] = {0,1,1,1,0,-1,-1,-1}; //八近傍
 int tsCs;
 int solv(void); //プロトタイプ宣言！
 
+const lnln MINT = 998244353;
+
 int main(void)
 {
 	ios::sync_with_stdio(false); //これがあるとマルチケースでも
