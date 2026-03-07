@@ -111,36 +111,48 @@ void makePerm(vector<int> &srce) //0-indexedの順列をつくる
 */
 
 long long Eucl(pair<int,int> firs, pair<int,int> seco){ //ユークリッドさん
+
 	int delf = abs(firs.first-seco.first);
 	int dels = abs(firs.second-seco.second);
-
 	return delf*delf + dels*dels;
 }
 
-int digt(long long nmbr){ //桁数を返す
-	int rtrn = 0;
-
-	while(nmbr){
-		rtrn++;
-		nmbr /= 10;
+int digt(long long deci){ //桁数を返す
+	
+	int leng = 0;
+	while(deci){
+		leng++;
+		deci /= 10;
 	}
-
-	return rtrn;
+	return leng;
 }
 
 bool isPl(string strg){ //回文判定
+	
 	string rvrs = strg;
 	reverse(rvrs.begin(), rvrs.end());
-
 	return strg == rvrs;
 }
 
-long long lgcd(long long firs, long long seco){
-	if(firs%seco == 0){
-		return seco;
-	}else{
-		return lgcd(seco, firs%seco);
+long long ggcd(long long firs, long long seco){
+
+	return ((firs%seco)? ggcd(seco,firs%seco):seco);
+}
+
+vector<int> glpf(int maxi){
+	
+	vector<int> lpfs(maxi);
+	iota(lpfs.begin(), lpfs.end(), 1);
+	vector<int> prim;
+	//線形篩
+	for(int n = 2;n <= maxi;n++){
+		if(lpfs[n-1] == n){prim.push_back(n);} //最小素因数がそれ自身なら素数
+		for(auto each:prim){
+			if(maxi < (long long)each*n || lpfs[n-1] < each){break;}
+			lpfs[each*n -1] = each;
+		}
 	}
+	return lpfs;
 }
 
 /***********************************************************************/
@@ -204,6 +216,74 @@ struct Unfi
 	}
 };
 
+template <int modu> // using mint = Mint<P>; と使う．Pは任意の素数
+struct Mint{
+
+	long long valu;
+
+	Mint(long long valu = 0):valu((valu+modu)%modu){}
+
+	Mint operator -()const{
+		return Mint(-valu);
+	}
+
+	Mint& operator +=(const Mint &argu){
+		valu += argu.valu;
+		if(modu <= valu){valu -= modu;}
+		return *this;
+	}
+	Mint operator +(const Mint &argu)const{return Mint(*this)+=argu;}
+
+	Mint& operator -=(const Mint &argu){
+		valu += modu-argu.valu;
+		if(modu <= valu){valu -= modu;}
+		return *this;
+	}
+	Mint operator -(const Mint &argu)const{return Mint(*this)-=argu;}
+
+	Mint& operator *=(const Mint &argu){
+		valu *= argu.valu;
+		valu %= modu;
+		return *this;
+	}
+	Mint operator *(const Mint &argu)const{return Mint(*this)*=argu;}
+
+	constexpr Mint powr(long long nowN)const{
+		if(!nowN){return 1;}
+		Mint nexN = powr(nowN >> 1);
+		nexN *= nexN;
+		if(nowN & 1){nexN *= *this;}
+		return nexN;
+	}
+
+	constexpr Mint inve()const{
+		return powr(modu-2);
+	}
+
+	Mint& operator /=(const Mint &argu){
+		return (*this) *= argu.inve();
+	}
+	Mint operator /(const Mint &argu)const{return Mint(*this)/=argu;}
+
+	bool operator ==(const Mint &argu){return valu == argu.valu;}
+	bool operator !=(const Mint &argu){return !(*this == argu);}
+	bool operator <(const Mint &argu){return valu < argu.valu;}
+	bool operator <=(const Mint &argu){
+		return (valu < argu.valu)||(*this == argu);
+	}
+	bool operator >(const Mint &argu){
+		return !(valu <= argu);
+	}
+	bool operator >=(const Mint &argu)const{
+		return !(*this < argu);
+	}
+
+	friend ostream& operator <<(ostream &ostr, const Mint &mint){
+		ostr << mint.valu;
+		return ostr;
+	}
+};
+
 /***********************************************************************/
 
 
@@ -223,24 +303,29 @@ int evch[] = {-1,-1,0,1,1,1,0,-1}, evcw[] = {0,1,1,1,0,-1,-1,-1}; //八近傍
 #endif
 
   /**//*************//**/
- /**/ int isMl = 0; /**/
+ /**/ int isMl = 1; /**/
 /**//*************//**/
 int tsCs;
 int solv(void); //プロトタイプ宣言！
 
-const lnln MINT = 998244353;
+/* ======  GLOBAL VARIABLES  ====== */
+
+/* ================================ */
 
 int main(void)
 {
 	ios::sync_with_stdio(false); //これがあるとマルチケースでも
   cin.tie(nullptr);            //きれいに出力できるようになる
 
+	/* ~~~~~~  INITIALIZATOIN ZONE  ~~~~~~ */
+
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	
 	if(isMl) cin >> tsCs;
 	else tsCs = 1;
 	for(;tsCs--;) solv();
 	return 0;
 }
-
 
 int solv(void)
 {
