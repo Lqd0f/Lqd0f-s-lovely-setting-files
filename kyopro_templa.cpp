@@ -155,6 +155,21 @@ vector<int> glpf(int maxi){
 	return lpfs;
 }
 
+long long fact(int numb){
+	
+	if(!numb){return 1;}
+	return numb*fact(numb-1);
+}
+
+long long comb(int firs, int seco){
+
+	lnln deno = 1;
+	repe(i,seco){deno *= (i+1);}
+	lnln nume = 1;
+	repe(i,seco){nume *= (firs-i);}
+	return nume/deno;
+}
+
 /***********************************************************************/
 
 
@@ -303,9 +318,8 @@ int evch[] = {-1,-1,0,1,1,1,0,-1}, evcw[] = {0,1,1,1,0,-1,-1,-1}; //八近傍
 #endif
 
   /**//*************//**/
- /**/ int isMl = 1; /**/
+ /**/ int isMl = 0; /**/
 /**//*************//**/
-int tsCs;
 int solv(void); //プロトタイプ宣言！
 
 /* ======  GLOBAL VARIABLES  ====== */
@@ -315,15 +329,16 @@ int solv(void); //プロトタイプ宣言！
 int main(void)
 {
 	ios::sync_with_stdio(false); //これがあるとマルチケースでも
-  cin.tie(nullptr);            //きれいに出力できるようになる
+  cin.tie(nullptr);						 //きれいに出力できるようになる
 
 	/* ~~~~~~  INITIALIZATOIN ZONE  ~~~~~~ */
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	
-	if(isMl) cin >> tsCs;
-	else tsCs = 1;
-	for(;tsCs--;) solv();
+	int tsCs;
+	if(isMl){cin >> tsCs;}
+	else{tsCs = 1;}
+	for(;tsCs--;){solv();}
 	return 0;
 }
 
