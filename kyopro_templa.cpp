@@ -179,8 +179,7 @@ long long comb(int firs, int seco){
 /* q                p */
 /* dbqpdbqpdbqpdbqpdb */
 
-struct Unfi
-{
+struct Unfi{
 	//vector<int> prnt; //頂点をindexとして，その頂点の親(自身が親 =根)
 	//vector<int> scal; //根をindexとして，その連結成分の頂点数
 	
@@ -189,11 +188,11 @@ struct Unfi
 
 	//n個の頂点から成るUnion-Find木を構築する．最初は各頂点が根
 	/*
-	Unfi(size_t n):prnt(n),scal(n, 1){
+	Unfi(size_t vnum):prnt(vnum),scal(vnum, 1){
 		iota(been(prnt), 0);
 	}
 	*/
-	Unfi(size_t n):pORs(n, -1){}
+	Unfi(size_t vnum):pORs(vnum, -1){}
 
 	//頂点vertの根を返す．
 	int find(int vert){
@@ -296,6 +295,62 @@ struct Mint{
 	friend ostream& operator <<(ostream &ostr, const Mint &mint){
 		ostr << mint.valu;
 		return ostr;
+	}
+};
+
+/*
+   1
+ 2   3
+4 5 6 7            ...0
+*/
+template<typename Tmpl>
+struct SegT{
+
+	function<Tmpl(Tmpl,Tmpl)> oper;
+	Tmpl idel;
+	vector<Tmpl> tree;
+	int leaf = 1;
+
+	SegT(size_t orig,
+		function<Tmpl(Tmpl,Tmpl)> oper, Tmpl idel) : oper(oper),idel(idel) {
+		while(leaf < orig){leaf *= 2;}
+		tree = vector<Tmpl>(leaf*2, idel);
+	}
+
+	void updt(int indx, int elem){ // 0-indexedでよびだす
+		indx += leaf;
+		tree[indx] = elem;
+		while(1 < indx){
+			indx /= 2;
+			tree[indx] = oper(tree[indx*2], tree[indx*2 +1]);
+		}
+	}
+
+	int calc(int left, int righ){ // 閉区間[l,r] (0-indexed)
+		Tmpl rslt = idel;
+		left += leaf;
+		righ += leaf;
+		while(left <= righ){
+			if(left%2){
+				rslt = oper(rslt, tree[left]);
+				left++;
+			}
+			left /= 2;
+
+			if(!(righ%2)){
+				rslt = oper(rslt, tree[righ]);
+				righ--;
+			}
+			righ /= 2;
+		}
+
+		return rslt;
+	}
+
+	void debg(){
+		for(int i = 1;i < leaf;i++){
+			cout << tree[i] << ((i & (i+1))==0? '\n':' ');
+		}
 	}
 };
 
