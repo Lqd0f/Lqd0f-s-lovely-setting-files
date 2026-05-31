@@ -53,9 +53,9 @@ export NVM_DIR="$(readlink -f $HOME)/.nvm"
 # +-------------------------------------------------------------------+ #
 
 
-export PYENV_HOME="$HOME/.pyenv"
+# export PYENV_HOME="$HOME/.pyenv"
 
-export PATH="$PATH:/usr/local/go/bin:/home/lqd0f/ghidra_11.3.2_PUBLIC/ghidraRun:$HOME/go/bin/:$PYENV_ROOT/bin:$JAVA_ROOT/bin"
+# export PATH="$PATH:/usr/local/go/bin:/home/lqd0f/ghidra_11.3.2_PUBLIC/ghidraRun:$HOME/go/bin/:$PYENV_ROOT/bin:$JAVA_ROOT/bin"
 
 addPath(){
 	case ":$PATH:" in
@@ -65,18 +65,19 @@ addPath(){
 }
 
 export PNPM_HOME="/home/lqd0f/.local/share/pnpm"
-export JAVA_HOME="$HOME/jdk-21.0.7+6"
+# export JAVA_HOME="$HOME/jdk-21.0.7+6"
 
 addPath "/usr/local/go/bin"
-# addPath "$HOME/ghidra_11.3.2_PUBLIC/ghidraRun/"
+addPath "$HOME/ctf/good2ls/ghidra_12.1_PUBLIC/ghidraRun"
 addPath "$HOME/go/bin"
 addPath "$PYENV_HOME/bin"
-addPath "$JAVA_HOME/bin"
+# addPath "$JAVA_HOME/bin"
 addPath "usr/lib/dart/bin"
+addPath "$HOME/flutter/bin"
 addPath "$PNPM_HOME"
-addPath "$HOME/.cargo/env"
+# addPath "$HOME/.cargo/env"
 
-eval "$(pyenv init --path)"
+# eval "$(pyenv init --path)"
 
 # +-------------------------------------------------------------------+ #
 
@@ -94,9 +95,13 @@ alias sl='ls'
 alias s='ls'
 alias l='ls'
 
-alias rmzz='rm *:Z*'
+alias scd='cd'
+
+alias rmzz='rm *Zone*Identifier'
+alias ctfi='mkdir bix && mkdir cry && mkdir frn && mkdir mis && mkdir nwk && mkdir osi && mkdir pwn && mkdir rev && mkdir web'
 
 alias hi='history'
+
 
 mkdirAndCd(){
   mkdir $1 && cd $1
@@ -110,6 +115,9 @@ alias deac='deactivate'
 
 alias ccc='cd && cd ~/kyopro/atcoder/cpp' 
 alias ccv='cd && cd ~/kyopro/atcoder/cpp && vim koala.cpp'
+
+alias ddd='cd && cd ~/kyopro/atcoder/dart' 
+alias ggg='cd && cd ~/kyopro/atcoder/go' 
 
 alias gpka='g++ -std=c++20 -D=__LOCAL -g koala.cpp -o AtCoder.exe && cp ./koala.cpp ~/SUBMIT/SubmitMe'
 alias gpkb='g++ -std=c++20 -D=__LOCAL -g koblb.cpp -o AtCoder.exe && cp ./koblb.cpp ~/SUBMIT/SubmitMe'
@@ -130,7 +138,7 @@ alias fcop='copy2ClipBoard'
 
 alias pet='./AtCoder.exe'
 
-#天ぷらを一括コピーするfor文をワンライナーで書いた
+#天ぷらを一括コピーするワンライナー
 alias alcl='for file in ko?l?.cpp; do cp ./templa $file; done'
 
 #C問題ガチャ用に書いた．
@@ -140,7 +148,7 @@ alias cgacha='./cMondaiGacha.exe'
 # +-------------------------------------------------------------------+ #
 
 
-alias ghidra='~/ghidra_11.3.2_PUBLIC/ghidraRun'
+alias ghidra='~/ctf/good2ls/ghidra_12.1_PUBLIC/ghidraRun'
 
 alias flutter-win='cmd.exe /c C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat'
 
