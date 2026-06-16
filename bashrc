@@ -102,6 +102,7 @@ alias ctfi='mkdir bix && mkdir cry && mkdir frn && mkdir mis && mkdir nwk && mkd
 
 alias hi='history'
 
+alias targz?='echo "base64 -d FILENAME.tar.gz.b64 | tar -xvzf -  >E(+0+ )3"'
 
 mkdirAndCd(){
   mkdir $1 && cd $1
