@@ -98,7 +98,7 @@ alias l='ls'
 alias scd='cd'
 
 alias rmzz='rm *Zone*Identifier'
-alias ctfi='mkdir bix && mkdir cry && mkdir frn && mkdir mis && mkdir nwk && mkdir osi && mkdir pwn && mkdir rev && mkdir web'
+alias ctfi='mkdir bix && mkdir cry && mkdir frn && mkdir mis && mkdir nwk && mkdir osi && mkdir ppc && mkdir rev && mkdir web'
 
 alias hi='history'
 
