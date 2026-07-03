@@ -31,6 +31,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -39,6 +40,9 @@ let g:lsp_diagnostics_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_document_highlight_enabled = 0
 let g:lsp_signature_help_enabled = 0 " 言語仕様のヒント消すやつ
+
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_diagonostics_enabled = 0 
 
 " yによるyankだけを検知してそのままclip.exeに流し込む
 " https://github.com/microsoft/WSL/issues/4440
