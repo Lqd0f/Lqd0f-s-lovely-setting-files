@@ -33,6 +33,16 @@
                                                                           `
 */
 
+/*
+
+this template is published in 
+
+https://github.com/Lqd0f/Lqd0f-s-lovely-setting-files/blob/main/kyopro_templa.cpp 
+
+it may help you with any porpose...? and I hope so.
+
+*/
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -386,7 +396,7 @@ int main(void)
 	ios::sync_with_stdio(false); //これがあるとマルチケースでも
   cin.tie(nullptr);						 //きれいに出力できるようになる
 
-	/* ~~~~~~  INITIALIZATOIN ZONE  ~~~~~~ */
+	/* ~~~~~~  INITIALIZATION ZONE  ~~~~~~ */
 
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	

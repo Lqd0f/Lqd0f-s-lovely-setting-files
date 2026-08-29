@@ -33,6 +33,16 @@
                                                                           `
 */
 
+/*
+
+this template is published in 
+
+https://github.com/Lqd0f/Lqd0f-s-lovely-setting-files/blob/main/kyopro_templa.dart
+
+it may help you with any porpose...? and I hope so.
+
+*/
+
 import "dart:io";
 import "dart:math";
 import "dart:convert";
@@ -55,7 +65,7 @@ class OwnRdr{
 		while(_ptr < _buf.length && _buf[_ptr] <= 32){_ptr++;}
 	}
 
-	string nxStr(){
+	String nxStr(){
 		_skp();
 		if(_buf.length <= _ptr){return "";}
 

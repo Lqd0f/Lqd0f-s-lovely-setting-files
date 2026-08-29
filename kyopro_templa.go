@@ -33,6 +33,16 @@
                                                                           `
 */
 
+/*
+
+this template is published in 
+
+https://github.com/Lqd0f/Lqd0f-s-lovely-setting-files/blob/main/kyopro_templa.go
+
+it may help you with any porpose...? and I hope so.
+
+*/
+
 package main
 
 import(
