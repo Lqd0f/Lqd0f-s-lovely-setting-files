@@ -180,6 +180,11 @@ long long comb(int firs, int seco){
 	return nume/deno;
 }
 
+long long Manh(int einh, int einw, int zwoh, int zwow){
+
+	return abs(einh-zwoh)+abs(einw-zwow);
+}
+
 /***********************************************************************/
 
 
