@@ -416,6 +416,17 @@ int solv(void)
 {
 	int N;
 	cin >> N;
+	int M;
+	cin >> M;
+	string S;
+	cin >> S;
+	veci A(N);
+	repe(i,N){
+		cin >> A[i];
+	}
+
+	int answ = 0;
+	cout << answ << '\n';
 
 	return 0;
 }
